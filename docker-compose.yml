@@ -6,11 +6,11 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydatabase
-      POSTGRES_INITDB_ARGS: "--wal-level=logical --max_replication_slots=10 --max_wal_senders=10"
     ports:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    command: postgres -c wal_level=logical -c max_replication_slots=10 -c max_wal_senders=10
     restart: always
 
   zookeeper:
@@ -18,6 +18,7 @@ services:
     container_name: zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
     ports:
       - "2181:2181"
 
@@ -27,10 +28,15 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://0.0.0.0:29092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
     ports:
       - "9092:9092"
+      - "29092:29092"
     depends_on:
       - zookeeper
 
@@ -58,12 +64,23 @@ services:
       VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       KEY_CONVERTER_SCHEMAS_ENABLE: "false"
       VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
-
+      CONNECT_REST_ADVERTISED_HOST_NAME: debezium
     ports:
       - "8083:8083"
     depends_on:
       - kafka
       - schema-registry
+      - postgres
+
+  connector-init:
+    image: curlimages/curl:latest
+    container_name: connector_init
+    volumes:
+      - ./init-connector.sh:/init-connector.sh
+    command: ["sh", "/init-connector.sh"]
+    depends_on:
+      - debezium
+      - kafka
       - postgres
 
 volumes:

@@ -7,7 +7,19 @@ TOPICS = [
     "debezium.public.orders"
 ]
 
-BOOTSTRAP_SERVERS = ["localhost:9092"]
+# Use the external Kafka address
+BOOTSTRAP_SERVERS = ["localhost:29092"]
+
+def process_debezium_message(msg):
+    """Process Debezium message format and extract the actual data."""
+    try:
+        # The actual data is in the 'after' field of the payload
+        if msg.get('payload', {}).get('after'):
+            return msg['payload']['after']
+        return msg
+    except Exception as e:
+        print(f"Error processing message: {e}")
+        return msg
 
 def main():
     consumer = KafkaConsumer(
@@ -22,7 +34,8 @@ def main():
     print(f"✅ Listening to topics: {', '.join(TOPICS)}\n")
     for msg in consumer:
         print(f"\n📦 Topic: {msg.topic}")
-        print(json.dumps(msg.value, indent=2))
+        processed_data = process_debezium_message(msg.value)
+        print(json.dumps(processed_data, indent=2))
 
 if __name__ == "__main__":
     main()
