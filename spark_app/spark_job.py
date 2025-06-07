@@ -1,42 +1,28 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import from_json, col
-from pyspark.sql.types import StructType, StructField, StringType, DoubleType, LongType
-
+from pyspark.sql.functions import col, get_json_object
 
 spark = SparkSession.builder \
-    .appName("Kafka JSON Stream") \
+    .appName("Kafka All Tables Stream") \
     .getOrCreate()
 
-# Schemat danych (dopasowany do danych z topiku products)
-schema = StructType([
-    StructField("product_id", LongType()),
-    StructField("name", StringType()),
-    StructField("category", StringType()),
-    StructField("price", DoubleType()),
-    StructField("stock_quantity", LongType()),
-    StructField("created_at", StringType())
-])
-
-# Odczyt z Kafka
+# Odczyt z Kafki – subskrybujemy WSZYSTKIE topiki z tabel Debezium
 df = spark.readStream \
     .format("kafka") \
     .option("kafka.bootstrap.servers", "kafka:9092") \
-    .option("subscribe", "debezium.public.products") \
+    .option("subscribePattern", "debezium.public.*") \
     .option("startingOffsets", "latest") \
     .load()
 
-# Deserializacja JSON
-json_df = df.selectExpr("CAST(value AS STRING)") \
-    .select(from_json(col("value"), schema).alias("data")) \
-    .select("data.*")
+# Parsujemy tylko JSON i wyciągamy payload.after jako tekst
+json_df = df.selectExpr("CAST(value AS STRING) as json_str") \
+    .withColumn("after", get_json_object(col("json_str"), "$.payload.after"))
 
-# Prosta transformacja
-result = json_df.select("name", "price", "stock_quantity")
-
-# Wypisanie do konsoli
-query = result.writeStream \
+# Wyświetlamy cały "after" jako string (czyli zawartość zmienionego rekordu)
+query = json_df.select("after") \
+    .writeStream \
     .format("console") \
     .outputMode("append") \
+    .option("truncate", False) \
     .start()
 
 query.awaitTermination()
