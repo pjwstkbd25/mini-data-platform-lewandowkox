@@ -82,6 +82,22 @@ services:
       - debezium
       - kafka
       - postgres
+  spark:
+    image: bitnami/spark:latest
+    container_name: spark
+    environment:
+      - SPARK_MODE=master
+    volumes:
+      - ./spark_app:/opt/spark-app
+      - ./jars:/opt/spark/jars
+      
+    command: >
+      bash -c "/opt/bitnami/spark/bin/spark-submit --jars /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars/kafka-clients-3.5.1.jar,/opt/spark/jars/spark-token-provider-kafka-0-10_2.12-3.5.0.jar /opt/spark-app/spark_job.py"
+
+    depends_on:
+      - kafka
+    ports:
+      - "4040:4040"
 
 volumes:
   postgres_data:
