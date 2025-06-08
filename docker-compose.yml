@@ -88,15 +88,49 @@ services:
     volumes:
      - ./jars:/opt/spark/jars
      - ./spark_app:/opt/spark_app
-    command: >
-      bash -c "/opt/bitnami/spark/bin/spark-submit \
-      --jars /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars/kafka-clients-3.5.1.jar,/opt/spark/jars/spark-token-provider-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars/commons-pool2-2.11.1.jar \
-      /opt/spark_app/spark_job.py"
+    command:
+      - "/opt/bitnami/spark/bin/spark-submit"
+      - "--packages"
+      - "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,io.delta:delta-spark_2.12:3.0.0,org.apache.hadoop:hadoop-aws:3.3.4"
+      - "--conf"
+      - "spark.driver.memory=2g"
+      - "--conf"
+      - "spark.executor.memory=2g"     
+      - "--conf"
+      - "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension"
+      - "--conf"
+      - "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+      - "--conf"
+      - "spark.hadoop.fs.s3a.access.key=minioadmin"
+      - "--conf"
+      - "spark.hadoop.fs.s3a.secret.key=minioadmin"
+      - "--conf"
+      - "spark.hadoop.fs.s3a.endpoint=http://minio:9000"
+      - "--conf"
+      - "spark.hadoop.fs.s3a.path.style.access=true"
+      - "/opt/spark_app/spark_job.py"
+
     depends_on:
      - kafka
+     - minio
     ports:
       - "4040:4040"
+
+  minio:
+    image: minio/minio:RELEASE.2024-04-18T19-09-19Z
+    container_name: minio
+    ports:
+      - "9100:9000"  # s3a:// endpoint
+      - "9101:9001"  # Web UI (ładna konsola)
+    volumes:
+     - minio-data:/data
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server --console-address ":9001" /data
+    restart: unless-stopped
 
 
 volumes:
   postgres_data:
+  minio-data:

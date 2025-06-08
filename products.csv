@@ -1,51 +1,51 @@
 product_id,name,category,price,stock_quantity,created_at
-1,Green Product,Home & Kitchen,694.43,43,2024-07-01 00:48:59.864611
-2,Military Product,Home & Kitchen,814.21,81,2022-05-08 10:53:02.759174
-3,Trouble Product,Clothing,953.36,34,2023-10-08 04:46:37.007308
-4,Per Product,Home & Kitchen,364.37,34,2022-03-24 00:11:47.201323
-5,Improve Product,Clothing,967.88,29,2023-01-24 18:33:33.366520
-6,Catch Product,Clothing,748.68,25,2020-11-26 05:00:20.521614
-7,Ability Product,Electronics,185.25,8,2023-04-30 21:47:53.564313
-8,Prove Product,Books,776.81,9,2020-02-11 18:15:03.297718
-9,Fill Product,Toys,924.39,86,2021-05-13 13:20:30.475832
-10,Commercial Product,Toys,740.05,25,2020-03-11 16:50:02.403620
-11,Expect Product,Home & Kitchen,496.27,13,2024-04-21 03:22:13.484252
-12,Back Product,Clothing,506.94,47,2023-01-07 03:19:53.653262
-13,Official Product,Books,892.67,25,2020-04-07 09:58:18.217083
-14,Later Product,Electronics,121.44,41,2020-07-18 10:57:13.389526
-15,Street Product,Toys,53.87,31,2022-11-04 11:34:01.392624
-16,Month Product,Toys,290.65,28,2024-12-30 20:19:51.099207
-17,Land Product,Clothing,873.11,66,2024-06-20 05:56:09.265371
-18,Degree Product,Books,198.49,87,2023-02-28 09:15:50.110403
-19,Determine Product,Toys,798.72,73,2022-05-12 18:11:51.352497
-20,Guess Product,Books,884.84,38,2020-06-25 05:17:39.060296
-21,Foot Product,Books,413.96,46,2023-03-29 00:43:59.479453
-22,Between Product,Clothing,357.58,35,2021-08-03 01:32:03.945029
-23,Full Product,Toys,191.69,98,2023-08-23 03:27:23.239831
-24,Fund Product,Clothing,258.46,47,2023-06-20 12:42:49.955441
-25,Floor Product,Books,441.79,82,2022-11-04 17:08:30.437069
-26,Tax Product,Home & Kitchen,555.96,76,2024-09-25 13:22:27.489681
-27,Part Product,Books,871.81,61,2022-05-07 17:29:26.933757
-28,Tree Product,Home & Kitchen,803.94,53,2023-06-19 05:19:25.329319
-29,Eight Product,Home & Kitchen,858.32,94,2020-10-26 05:50:27.135043
-30,Figure Product,Toys,573.14,71,2020-05-26 21:43:23.802397
-31,Bit Product,Clothing,386.02,99,2023-09-04 13:03:01.460015
-32,Eat Product,Toys,479.57,79,2023-04-27 09:18:13.853882
-33,Sure Product,Toys,741.32,30,2022-09-17 05:05:09.555346
-34,Television Product,Electronics,619.35,5,2021-10-21 13:41:56.240702
-35,Seek Product,Toys,820.56,37,2023-10-13 17:00:17.297003
-36,Yes Product,Books,312.59,57,2022-12-13 17:03:30.628802
-37,Lead Product,Home & Kitchen,661.09,76,2024-05-19 16:06:07.943974
-38,Cold Product,Books,576.03,5,2023-08-03 04:17:51.342448
-39,Future Product,Home & Kitchen,772.95,46,2021-01-16 06:55:46.843344
-40,Anything Product,Clothing,184.43,83,2022-05-17 19:15:45.259510
-41,Agent Product,Clothing,946.25,19,2023-02-28 02:07:19.753428
-42,Statement Product,Home & Kitchen,283.4,57,2023-10-21 14:39:23.390211
-43,Production Product,Clothing,352.36,93,2023-12-03 03:50:11.157830
-44,Outside Product,Home & Kitchen,943.86,22,2021-03-05 09:11:27.983460
-45,Development Product,Electronics,340.82,63,2023-08-24 19:17:23.403773
-46,Evidence Product,Books,26.61,33,2024-05-23 09:50:29.755628
-47,Different Product,Electronics,753.3,50,2021-10-28 16:30:44.432936
-48,See Product,Electronics,671.37,90,2024-09-20 16:13:46.135062
-49,Worry Product,Electronics,969.08,27,2025-02-28 16:51:26.601745
-50,Yard Product,Toys,309.5,55,2021-07-04 18:00:31.325957
+1,Star Product,Electronics,216.53,35,2024-02-17 13:24:00.560919
+2,Increase Product,Clothing,128.23,16,2022-04-03 15:55:02.936563
+3,Man Product,Home & Kitchen,857.63,70,2025-04-28 02:13:36.280563
+4,Woman Product,Toys,345.28,66,2020-05-23 20:20:44.361736
+5,City Product,Electronics,851.78,30,2025-05-04 02:08:49.020699
+6,Cut Product,Clothing,268.33,96,2023-03-12 20:17:47.665009
+7,So Product,Home & Kitchen,765.53,36,2023-04-09 03:19:28.314565
+8,Professional Product,Books,861.77,53,2022-03-25 14:36:26.288750
+9,Product Product,Home & Kitchen,92.95,6,2022-03-06 06:28:44.877249
+10,Life Product,Clothing,876.65,26,2021-04-26 12:58:12.424598
+11,Black Product,Books,209.56,46,2023-08-17 06:57:22.723140
+12,Organization Product,Electronics,219.57,52,2024-10-19 14:11:11.434033
+13,No Product,Books,964.91,94,2021-04-07 10:50:39.957315
+14,Change Product,Toys,945.4,22,2020-06-27 00:18:27.706064
+15,Week Product,Books,941.51,11,2021-08-08 09:07:02.541511
+16,Policy Product,Toys,586.8,37,2025-04-21 03:29:50.508379
+17,Position Product,Electronics,485.2,40,2020-11-28 12:00:42.493125
+18,Forward Product,Toys,456.64,37,2024-07-07 12:39:34.825678
+19,Control Product,Clothing,727.2,98,2021-09-18 15:28:06.287270
+20,Movie Product,Home & Kitchen,584.07,72,2021-01-14 07:29:07.663562
+21,Meeting Product,Toys,155.83,55,2020-04-28 17:01:28.405118
+22,Research Product,Toys,756.67,11,2023-10-05 10:07:48.129846
+23,Reason Product,Books,215.74,40,2021-09-12 14:18:57.746682
+24,Represent Product,Electronics,689.05,83,2024-11-27 12:50:30.802996
+25,Action Product,Books,325.98,59,2022-01-22 14:35:34.774657
+26,Several Product,Books,547.62,42,2022-03-28 16:37:53.089392
+27,Share Product,Books,92.36,57,2023-04-19 21:44:27.091566
+28,Do Product,Clothing,190.33,40,2025-02-16 20:45:48.147365
+29,It Product,Clothing,164.13,67,2021-05-06 02:41:54.634305
+30,Senior Product,Clothing,632.53,13,2024-07-05 12:03:17.589732
+31,Image Product,Home & Kitchen,36.61,62,2023-03-02 04:25:43.687675
+32,Control Product,Home & Kitchen,876.43,50,2021-05-05 21:36:47.055892
+33,Here Product,Toys,493.22,51,2024-05-31 06:40:21.185023
+34,Drive Product,Home & Kitchen,418.58,8,2023-07-13 02:32:58.027745
+35,Painting Product,Books,978.85,38,2020-02-24 09:01:09.449605
+36,Heart Product,Electronics,399.82,37,2021-04-26 13:51:32.514525
+37,Draw Product,Toys,936.44,51,2023-12-21 05:07:55.608783
+38,Less Product,Electronics,109.19,9,2025-04-16 09:25:07.037632
+39,Wear Product,Clothing,831.59,82,2023-07-08 15:54:42.670958
+40,Back Product,Electronics,197.91,91,2025-04-04 12:57:51.255306
+41,Out Product,Clothing,969.19,83,2025-04-06 05:00:50.852458
+42,Civil Product,Books,913.67,20,2022-07-19 19:18:36.063524
+43,Put Product,Home & Kitchen,986.42,67,2024-09-01 00:11:25.039533
+44,High Product,Home & Kitchen,405.33,91,2020-05-14 09:27:00.151917
+45,Any Product,Books,34.18,29,2020-07-04 07:22:02.634874
+46,Relate Product,Electronics,89.92,61,2025-01-24 06:27:52.583005
+47,Shoulder Product,Books,484.1,26,2023-12-25 09:15:42.822741
+48,Time Product,Books,869.2,7,2024-09-29 00:29:39.316160
+49,Investment Product,Clothing,685.29,55,2024-05-11 21:41:05.242763
+50,Off Product,Books,306.48,18,2024-11-08 15:00:27.724102

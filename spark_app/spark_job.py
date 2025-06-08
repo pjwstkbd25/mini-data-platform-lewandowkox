@@ -1,11 +1,11 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, get_json_object
+from pyspark.sql.functions import col, get_json_object, from_json
+from pyspark.sql.types import StringType, StructType, StructField
 
-spark = SparkSession.builder \
-    .appName("Kafka All Tables Stream") \
-    .getOrCreate()
+# Sesja
+spark = SparkSession.builder.appName("Kafka All Tables Stream").getOrCreate()
 
-# Odczyt z Kafki – subskrybujemy WSZYSTKIE topiki z tabel Debezium
+# Stream z Kafki
 df = spark.readStream \
     .format("kafka") \
     .option("kafka.bootstrap.servers", "kafka:9092") \
@@ -13,16 +13,40 @@ df = spark.readStream \
     .option("startingOffsets", "earliest") \
     .load()
 
-# Parsujemy tylko JSON i wyciągamy payload.after jako tekst
+# Parsowanie wartości
 json_df = df.selectExpr("CAST(value AS STRING) as json_str") \
-    .withColumn("after", get_json_object(col("json_str"), "$.payload.after"))
+    .withColumn("after", get_json_object(col("json_str"), "$.payload.after")) \
+    .filter(col("after").isNotNull())
 
-# Wyświetlamy cały "after" jako string (czyli zawartość zmienionego rekordu)
-query = json_df.select("after") \
+# Przykładowy schemat (dla jednej tabeli)
+schema = StructType([
+    StructField("id", StringType(), True),
+    StructField("name", StringType(), True),
+    StructField("email", StringType(), True)
+])
+
+parsed_df = json_df.withColumn("after_json", from_json(col("after"), schema)) \
+                   .select("after_json.*")
+
+# Konsola
+query1 = json_df.select("after") \
     .writeStream \
     .format("console") \
     .outputMode("append") \
-    .option("truncate", False) \
+    .option("truncate", True) \
+    .option("numRows", 10) \
     .start()
 
-query.awaitTermination()
+# Delta Lake
+query2 = parsed_df.writeStream \
+    .format("delta") \
+    .outputMode("append") \
+    .option("checkpointLocation", "s3a://minio-bucket/_checkpoints/debezium-data") \
+    .option("path", "s3a://minio-bucket/debezium-data") \
+    .start()
+
+# Poprawne zatrzymanie
+spark.streams.awaitAnyTermination()
+
+
+
