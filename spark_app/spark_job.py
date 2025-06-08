@@ -10,7 +10,7 @@ df = spark.readStream \
     .format("kafka") \
     .option("kafka.bootstrap.servers", "kafka:9092") \
     .option("subscribePattern", "debezium.public.*") \
-    .option("startingOffsets", "latest") \
+    .option("startingOffsets", "earliest") \
     .load()
 
 # Parsujemy tylko JSON i wyciągamy payload.after jako tekst
