@@ -130,6 +130,102 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     command: server --console-address ":9001" /data
     restart: unless-stopped
+    postgres-meta:
+    image: postgres:16
+    container_name: postgres_meta
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_meta_data:/var/lib/postgresql/data
+
+  airflow-init:
+    image: apache/airflow:2.10.2-python3.11
+    container_name: airflow_init
+    env_file: ./airflow/.env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-meta:5432/airflow
+      PROJECT_DIR: ${PWD}
+      _PIP_ADDITIONAL_REQUIREMENTS: |
+        -r /opt/airflow/requirements.txt
+    user: "${AIRFLOW_UID:-50000}:0"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow/requirements.txt:/opt/airflow/requirements.txt
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/opt/airflow/jobs
+    depends_on:
+      postgres-meta:
+        condition: service_healthy
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - >
+        pip install --no-cache-dir -r /opt/airflow/requirements.txt &&
+        airflow db init &&
+        airflow users create --username airflow --password airflow
+        --firstname Admin --lastname User --role Admin --email admin@example.com
+
+  airflow-webserver:
+    image: apache/airflow:2.10.2-python3.11
+    container_name: airflow_webserver
+    env_file: ./airflow/.env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-meta:5432/airflow
+      PROJECT_DIR: ${PWD}
+      _PIP_ADDITIONAL_REQUIREMENTS: |
+        -r /opt/airflow/requirements.txt
+    user: "${AIRFLOW_UID:-50000}:0"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow/requirements.txt:/opt/airflow/requirements.txt
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/opt/airflow/jobs
+    depends_on:
+      postgres-meta:
+        condition: service_healthy
+    command: webserver
+    ports:
+      - "8080:8080"
+
+  airflow-scheduler:
+    image: apache/airflow:2.10.2-python3.11
+    container_name: airflow_scheduler
+    env_file: ./airflow/.env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-meta:5432/airflow
+      PROJECT_DIR: ${PWD}
+      _PIP_ADDITIONAL_REQUIREMENTS: |
+        -r /opt/airflow/requirements.txt
+    user: "${AIRFLOW_UID:-50000}:0"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow/requirements.txt:/opt/airflow/requirements.txt
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/opt/airflow/jobs
+    depends_on:
+      postgres-meta:
+        condition: service_healthy
+    command: scheduler
 
 
 volumes:
