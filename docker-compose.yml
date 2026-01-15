@@ -130,7 +130,7 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     command: server --console-address ":9001" /data
     restart: unless-stopped
-    postgres-meta:
+  postgres-meta:
     image: postgres:16
     container_name: postgres_meta
     environment:
@@ -231,3 +231,4 @@ services:
 volumes:
   postgres_data:
   minio-data:
+  postgres_meta_data:
