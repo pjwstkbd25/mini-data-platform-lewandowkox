@@ -1,0 +1,51 @@
+[33mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv[0m[33m
+[0m
+[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m24.0[0m[39;49m -> [0m[32;49m25.3[0m
+[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip install --upgrade pip[0m
+
+Calculating Metrics:   0% 0/1 [00:00<?, ?it/s]
+Calculating Metrics:   0% 0/1 [00:00<?, ?it/s]
+Calculating Metrics: 100% 1/1 [00:00<00:00, 5336.26it/s]
+Calculating Metrics: 100% 1/1 [00:00<00:00, 3728.27it/s]
+Calculating Metrics: 100% 1/1 [00:00<00:00, 3310.42it/s]
+Calculating Metrics: 100% 1/1 [00:00<00:00, 2716.52it/s]
+
+Calculating Metrics:   0% 0/6 [00:00<?, ?it/s]
+Calculating Metrics:   0% 0/6 [00:00<?, ?it/s]
+Calculating Metrics:  33% 2/6 [00:00<00:00, 4990.25it/s]
+Calculating Metrics:  33% 2/6 [00:00<00:00, 1587.55it/s]
+Calculating Metrics:  50% 3/6 [00:00<00:00, 2113.35it/s]
+Calculating Metrics:  50% 3/6 [00:00<00:00, 1355.19it/s]
+Calculating Metrics:  67% 4/6 [00:00<00:00, 1518.71it/s]
+Calculating Metrics:  67% 4/6 [00:00<00:00, 1217.95it/s]
+Calculating Metrics: 100% 6/6 [00:00<00:00, 1513.73it/s]
+Calculating Metrics: 100% 6/6 [00:00<00:00, 1385.17it/s]
+Calculating Metrics: 100% 6/6 [00:00<00:00, 1376.54it/s]
+Calculating Metrics: 100% 6/6 [00:00<00:00, 1363.48it/s]
+
+Calculating Metrics:   0% 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0% 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25% 2/8 [00:00<00:00, 6447.82it/s]
+Calculating Metrics:  25% 2/8 [00:00<00:00, 1253.53it/s]
+Calculating Metrics:  38% 3/8 [00:00<00:00, 1716.87it/s]
+Calculating Metrics:  38% 3/8 [00:00<00:00, 1022.59it/s]
+Calculating Metrics:  62% 5/8 [00:00<00:00, 1265.33it/s]
+Calculating Metrics:  62% 5/8 [00:00<00:00, 1026.51it/s]
+Calculating Metrics: 100% 8/8 [00:00<00:00, 1375.35it/s]
+Calculating Metrics: 100% 8/8 [00:00<00:00, 1277.87it/s]
+Calculating Metrics: 100% 8/8 [00:00<00:00, 1273.07it/s]
+Calculating Metrics: 100% 8/8 [00:00<00:00, 1264.11it/s]
+
+Calculating Metrics:   0% 0/9 [00:00<?, ?it/s]
+Calculating Metrics:   0% 0/9 [00:00<?, ?it/s]
+Calculating Metrics:  22% 2/9 [00:00<00:00, 3818.21it/s]
+Calculating Metrics:  22% 2/9 [00:00<00:00, 775.36it/s] 
+Calculating Metrics:  33% 3/9 [00:00<00:00, 1093.79it/s]
+Calculating Metrics:  33% 3/9 [00:00<00:00, 591.66it/s] 
+Calculating Metrics:  56% 5/9 [00:00<00:00, 783.92it/s]
+Calculating Metrics:  56% 5/9 [00:00<00:00, 629.38it/s]
+Calculating Metrics: 100% 9/9 [00:00<00:00, 962.66it/s]
+Calculating Metrics: 100% 9/9 [00:00<00:00, 883.61it/s]
+Calculating Metrics: 100% 9/9 [00:00<00:00, 881.32it/s]
+Calculating Metrics: 100% 9/9 [00:00<00:00, 876.39it/s]
+GE validation success: True
