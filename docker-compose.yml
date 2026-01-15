@@ -142,7 +142,7 @@ services:
       interval: 5s
       retries: 10
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
       - postgres_meta_data:/var/lib/postgresql/data
 
