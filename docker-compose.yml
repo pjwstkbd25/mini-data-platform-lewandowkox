@@ -1,4 +1,4 @@
-env_file: .env
+
 services:
   postgres:
     image: debezium/postgres:15
