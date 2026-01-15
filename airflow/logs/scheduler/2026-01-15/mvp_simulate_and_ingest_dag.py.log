@@ -1849,3 +1849,24 @@ NameError: name 'APP_DIR' is not defined
 [2026-01-15T22:15:58.257+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:15:58.257+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-01-15T22:15:58.274+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:15:58.274+0000] {dag.py:4180} INFO - Setting next_dagrun for mvp_simulate_and_ingest to 2026-01-15 22:00:00+00:00, run_after=2026-01-15 23:00:00+00:00
 [2026-01-15T22:15:58.284+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/mvp_simulate_and_ingest_dag.py took 0.070 seconds
+[2026-01-15T22:16:28.625+0000] {processor.py:186} INFO - Started process (PID=211) to work on /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:16:28.625+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/mvp_simulate_and_ingest_dag.py for tasks to queue
+[2026-01-15T22:16:28.627+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:16:28.627+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:16:28.641+0000] {processor.py:925} INFO - DAG(s) 'mvp_simulate_and_ingest' retrieved from /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:16:28.660+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:16:28.660+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-01-15T22:16:28.675+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:16:28.675+0000] {dag.py:4180} INFO - Setting next_dagrun for mvp_simulate_and_ingest to 2026-01-15 22:00:00+00:00, run_after=2026-01-15 23:00:00+00:00
+[2026-01-15T22:16:28.685+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/mvp_simulate_and_ingest_dag.py took 0.066 seconds
+[2026-01-15T22:16:58.972+0000] {processor.py:186} INFO - Started process (PID=216) to work on /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:16:58.973+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/mvp_simulate_and_ingest_dag.py for tasks to queue
+[2026-01-15T22:16:58.975+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:16:58.975+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:16:58.987+0000] {processor.py:925} INFO - DAG(s) 'mvp_simulate_and_ingest' retrieved from /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:16:59.002+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:16:59.002+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-01-15T22:16:59.014+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:16:59.013+0000] {dag.py:4180} INFO - Setting next_dagrun for mvp_simulate_and_ingest to 2026-01-15 22:00:00+00:00, run_after=2026-01-15 23:00:00+00:00
+[2026-01-15T22:16:59.022+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/mvp_simulate_and_ingest_dag.py took 0.055 seconds
+[2026-01-15T22:17:29.409+0000] {processor.py:186} INFO - Started process (PID=221) to work on /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:17:29.410+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/mvp_simulate_and_ingest_dag.py for tasks to queue
+[2026-01-15T22:17:29.411+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:17:29.411+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:17:29.420+0000] {processor.py:925} INFO - DAG(s) 'mvp_simulate_and_ingest' retrieved from /opt/airflow/dags/mvp_simulate_and_ingest_dag.py
+[2026-01-15T22:17:29.436+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:17:29.436+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-01-15T22:17:29.448+0000] {logging_mixin.py:190} INFO - [2026-01-15T22:17:29.448+0000] {dag.py:4180} INFO - Setting next_dagrun for mvp_simulate_and_ingest to 2026-01-15 22:00:00+00:00, run_after=2026-01-15 23:00:00+00:00
+[2026-01-15T22:17:29.458+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/mvp_simulate_and_ingest_dag.py took 0.053 seconds
