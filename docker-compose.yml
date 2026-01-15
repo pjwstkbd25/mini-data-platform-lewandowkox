@@ -22,6 +22,40 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - "2181:2181"
+  
+  spark-bronze-to-silver:
+    image: bitnami/spark:latest
+    container_name: spark_bronze_to_silver
+    depends_on:
+     - minio
+    environment:
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-minioadmin}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      S3_ENDPOINT: http://minio:9000
+      S3_BUCKET: lake
+      S3_BRONZE_PREFIX: bronze
+      S3_SILVER_PREFIX: silver
+    volumes:
+      - ./spark/app:/opt/spark_app
+    command:
+      - /opt/bitnami/spark/bin/spark-submit
+      - --packages
+      - io.delta:delta-spark_2.12:3.0.0,org.apache.hadoop:hadoop-aws:3.3.4
+      - --conf
+      - spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension
+      - --conf
+      - spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog
+      - --conf
+      - spark.hadoop.fs.s3a.endpoint=http://minio:9000
+      - --conf
+      - spark.hadoop.fs.s3a.access.key=minioadmin
+      - --conf
+      - spark.hadoop.fs.s3a.secret.key=minioadmin
+      - --conf
+      - spark.hadoop.fs.s3a.path.style.access=true
+      - --conf
+      - spark.hadoop.fs.s3a.connection.ssl.enabled=false
+      - /opt/spark_app/bronze_to_silver.py
 
   kafka:
     image: confluentinc/cp-kafka:7.5.0
