@@ -1,0 +1,25 @@
+[2026-01-15T22:14:50.543+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-01-15T22:14:50.553+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mvp_simulate_and_ingest.ingest_to_postgres manual__2026-01-15T22:14:38.382577+00:00 [queued]>
+[2026-01-15T22:14:50.557+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mvp_simulate_and_ingest.ingest_to_postgres manual__2026-01-15T22:14:38.382577+00:00 [queued]>
+[2026-01-15T22:14:50.557+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-01-15T22:14:50.563+0000] {taskinstance.py:2888} INFO - Executing <Task(DockerOperator): ingest_to_postgres> on 2026-01-15 22:14:38.382577+00:00
+[2026-01-15T22:14:50.567+0000] {standard_task_runner.py:72} INFO - Started process 194 to run task
+[2026-01-15T22:14:50.569+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'mvp_simulate_and_ingest', 'ingest_to_postgres', 'manual__2026-01-15T22:14:38.382577+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/mvp_simulate_and_ingest_dag.py', '--cfg-path', '/tmp/tmp5b56xoi9']
+[2026-01-15T22:14:50.571+0000] {standard_task_runner.py:105} INFO - Job 27: Subtask ingest_to_postgres
+[2026-01-15T22:14:50.602+0000] {task_command.py:467} INFO - Running <TaskInstance: mvp_simulate_and_ingest.ingest_to_postgres manual__2026-01-15T22:14:38.382577+00:00 [running]> on host 0d18fb291860
+[2026-01-15T22:14:50.644+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mvp_simulate_and_ingest' AIRFLOW_CTX_TASK_ID='ingest_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2026-01-15T22:14:38.382577+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-01-15T22:14:38.382577+00:00'
+[2026-01-15T22:14:50.644+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-01-15T22:14:50.683+0000] {docker.py:355} INFO - Starting docker container from image python:3.11-slim
+[2026-01-15T22:14:59.858+0000] {docker.py:66} INFO - WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[2026-01-15T22:14:59.990+0000] {docker.py:66} INFO - 
+[2026-01-15T22:14:59.990+0000] {docker.py:66} INFO - [notice] A new release of pip is available: 24.0 -> 25.3
+[2026-01-15T22:14:59.991+0000] {docker.py:66} INFO - [notice] To update, run: pip install --upgrade pip
+[2026-01-15T22:15:00.480+0000] {docker.py:66} INFO - Warning: customers.csv not found.
+[2026-01-15T22:15:00.481+0000] {docker.py:66} INFO - Warning: products.csv not found.
+[2026-01-15T22:15:00.481+0000] {docker.py:66} INFO - Warning: orders.csv not found.
+[2026-01-15T22:15:00.481+0000] {docker.py:66} INFO - All CSV files processed successfully.
+[2026-01-15T22:15:00.987+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-01-15T22:15:00.987+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=mvp_simulate_and_ingest, task_id=ingest_to_postgres, run_id=manual__2026-01-15T22:14:38.382577+00:00, execution_date=20260115T221438, start_date=20260115T221450, end_date=20260115T221500
+[2026-01-15T22:15:01.004+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-01-15T22:15:01.024+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-01-15T22:15:01.031+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

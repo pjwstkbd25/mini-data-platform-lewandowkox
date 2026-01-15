@@ -1,0 +1,25 @@
+[2026-01-15T22:14:39.465+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-01-15T22:14:39.475+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mvp_simulate_and_ingest.generate_csv manual__2026-01-15T22:14:38.382577+00:00 [queued]>
+[2026-01-15T22:14:39.479+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mvp_simulate_and_ingest.generate_csv manual__2026-01-15T22:14:38.382577+00:00 [queued]>
+[2026-01-15T22:14:39.479+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-01-15T22:14:39.485+0000] {taskinstance.py:2888} INFO - Executing <Task(DockerOperator): generate_csv> on 2026-01-15 22:14:38.382577+00:00
+[2026-01-15T22:14:39.489+0000] {standard_task_runner.py:72} INFO - Started process 191 to run task
+[2026-01-15T22:14:39.491+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'mvp_simulate_and_ingest', 'generate_csv', 'manual__2026-01-15T22:14:38.382577+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/mvp_simulate_and_ingest_dag.py', '--cfg-path', '/tmp/tmpsry4kp04']
+[2026-01-15T22:14:39.493+0000] {standard_task_runner.py:105} INFO - Job 26: Subtask generate_csv
+[2026-01-15T22:14:39.524+0000] {task_command.py:467} INFO - Running <TaskInstance: mvp_simulate_and_ingest.generate_csv manual__2026-01-15T22:14:38.382577+00:00 [running]> on host 0d18fb291860
+[2026-01-15T22:14:39.567+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mvp_simulate_and_ingest' AIRFLOW_CTX_TASK_ID='generate_csv' AIRFLOW_CTX_EXECUTION_DATE='2026-01-15T22:14:38.382577+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-01-15T22:14:38.382577+00:00'
+[2026-01-15T22:14:39.568+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-01-15T22:14:39.608+0000] {docker.py:355} INFO - Starting docker container from image python:3.11-slim
+[2026-01-15T22:14:48.188+0000] {docker.py:66} INFO - WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[2026-01-15T22:14:48.322+0000] {docker.py:66} INFO - 
+[2026-01-15T22:14:48.323+0000] {docker.py:66} INFO - [notice] A new release of pip is available: 24.0 -> 25.3
+[2026-01-15T22:14:48.323+0000] {docker.py:66} INFO - [notice] To update, run: pip install --upgrade pip
+[2026-01-15T22:14:48.737+0000] {docker.py:66} INFO - Generated customers.csv
+[2026-01-15T22:14:48.737+0000] {docker.py:66} INFO - Generated products.csv
+[2026-01-15T22:14:48.740+0000] {docker.py:66} INFO - Generated orders.csv
+[2026-01-15T22:14:48.741+0000] {docker.py:66} INFO - All CSV files generated successfully.
+[2026-01-15T22:14:49.412+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-01-15T22:14:49.412+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=mvp_simulate_and_ingest, task_id=generate_csv, run_id=manual__2026-01-15T22:14:38.382577+00:00, execution_date=20260115T221438, start_date=20260115T221439, end_date=20260115T221449
+[2026-01-15T22:14:49.434+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-01-15T22:14:49.457+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-01-15T22:14:49.458+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
