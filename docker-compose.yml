@@ -261,7 +261,19 @@ services:
         condition: service_healthy
     command: scheduler
 
-
+  mlflow:
+    image: python:3.11-slim
+    container_name: mlflow
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./mlflow:/app
+    working_dir: /app
+    command: >
+      bash -lc "pip install -q mlflow &&
+                mlflow server --host 0.0.0.0 --port 5000
+                --backend-store-uri sqlite:///mlflow.db
+                --default-artifact-root /mlflow/artifacts"
 volumes:
   postgres_data:
   minio-data:
